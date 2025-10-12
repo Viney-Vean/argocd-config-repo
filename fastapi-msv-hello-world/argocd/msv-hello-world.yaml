@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/Viney-Vean/fastapi-k8s.git' # The Git repository URL
+    repoURL: 'https://github.com/Viney-Vean/argocd-config-repo.git' # The Git repository URL
     targetRevision: HEAD
     path: 'argocd-config-repo/environments/production' # Path to your production manifests
   destination:

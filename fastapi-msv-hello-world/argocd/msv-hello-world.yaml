@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fastapi-msv-hello-world-production
+  namespace: fastapi-msv-hello-world
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Viney-Vean/fastapi-k8s.git' # The Git repository URL
+    targetRevision: HEAD
+    path: 'argocd-config-repo/environments/production' # Path to your production manifests
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: 'fastapi-msv-hello-world' # Target namespace in your production cluster
+  syncPolicy:
+    automated:
+      prune: true # Automatically delete resources removed from Git
+      selfHeal: true # Automatically revert unauthorized changes back to the Git state
+    syncOptions:
+      - CreateNamespace=true

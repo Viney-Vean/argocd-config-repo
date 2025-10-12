@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-msv-hello-world
+  labels:
+    app: fastapi-msv-hello-world
+spec:
+  replicas: 1   # default; overwritten in overlays
+  selector:
+    matchLabels:
+      app: fastapi-msv-hello-world
+  template:
+    metadata:
+      labels:
+        app: fastapi-msv-hello-world
+    spec:
+      containers:
+        - name: fastapi-msv-hello-world
+          image: vineyveanrnd/fastapi-k8s:v202510053
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10

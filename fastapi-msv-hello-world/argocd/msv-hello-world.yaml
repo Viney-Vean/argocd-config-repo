@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fastapi-msv-hello-world-production
+  name: fastapi-msv-hello-world
   namespace: fastapi-msv-hello-world
 spec:
   project: default

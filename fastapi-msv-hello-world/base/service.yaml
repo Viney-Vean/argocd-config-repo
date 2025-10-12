@@ -13,4 +13,4 @@ spec:
       name: http
   selector:
     app: fastapi-msv-hello-world
-  type: NodePort   # MetalLB will assign external IP
+  type: LoadBalancer   # MetalLB will assign external IP

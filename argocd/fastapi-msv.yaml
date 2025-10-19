@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fastapi-msv-hello
-  namespace: fastapi-msv-hello
+  name: fastapi
+  namespace: fastapi
 spec:
   project: default
   source:
     repoURL: 'https://github.com/Viney-Vean/argocd-config-repo.git' # The Git repository URL
     targetRevision: HEAD
-    path: 'argocd-config-repo/environments/production' # Path to your production manifests
+    path: 'overlays/dc/replica-patch.yaml' # Path to your production manifests
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: 'fastapi-msv-hello' # Target namespace in your production cluster
+    namespace: 'fastapi' # Target namespace in your production cluster
   syncPolicy:
     automated:
       prune: true # Automatically delete resources removed from Git

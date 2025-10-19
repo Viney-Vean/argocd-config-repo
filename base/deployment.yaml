@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastapi-msv-hello
+  name: fastapi
   labels:
-    app: fastapi-msv-hello
+    app: fastapi
 spec:
   replicas: 1   # default; overwritten in overlays
   selector:
     matchLabels:
-      app: fastapi-msv-hello
+      app: fastapi
   template:
     metadata:
       labels:
-        app: fastapi-msv-hello
+        app: fastapi
     spec:
       containers:
-        - name: fastapi-msv-hello
+        - name: fastapi
           image: vineyveanrnd/fastapi-k8s:v202510053
           imagePullPolicy: IfNotPresent
           ports:

@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/Viney-Vean/argocd-config-repo.git' # The Git repository URL
     targetRevision: HEAD
-    path: 'overlays/dc/replica-patch.yaml' # Path to your production manifests
+    path: 'overlays/dc' # Path to your production manifests
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: 'fastapi' # Target namespace in your production cluster
